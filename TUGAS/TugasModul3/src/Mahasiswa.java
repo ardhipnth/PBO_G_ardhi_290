@@ -1,19 +1,22 @@
-import java.util.Scanner;
-
-public class Mahasiswa {
-    String Nama;
-    String Nim;
-
-    public Mahasiswa (String username, String Password){
-        this.Nama = Nama;
-        this.Nim = Nim;
-    }
-    public boolean login(String username, String Password){
-        return this.Nama.equals(username) && this.Nim.equals(Password);
-    }
-    public void displayInfo(){
-        System.out.println(" Nama: " + this.Nama + " Nim " + this.Nim);
+public class Mahasiswa extends User{
+    public Mahasiswa(String nama, String nim){
+        super(nama, nim);
     }
 
+    public void displayinfo(){
+        System.out.println("Data Mahasiswa:");
+        System.out.println("Nama:" + getNama());
+        System.out.println("NIM:" + getNim());
+    }
+
+    public boolean login(String nama, String nim){
+        if(getNama().equalsIgnoreCase(nama) && getNim().equalsIgnoreCase(nim)){
+            System.out.println("login berhasil");
+            displayinfo();
+            return true;
+        } else {
+            System.out.println("login gagal, nama atau nim salah coba lagi");
+            return false;
+        }
+    }
 }
-
